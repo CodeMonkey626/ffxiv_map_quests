@@ -9,6 +9,7 @@ using Map = FFXIVClientStructs.FFXIV.Client.Game.UI.Map;
 using Quest = Lumina.Excel.GeneratedSheets.Quest;
 using ImGuiNET;
 using Dalamud.Interface;
+using Dalamud.Game.Text.SeStringHandling.Payloads;
 
 namespace SamplePlugin.Windows;
 
@@ -44,8 +45,20 @@ public unsafe class MainWindow : Window, IDisposable
                 
                 foreach (var marker in quest.MarkerData) {
                     var cursorStart = ImGui.GetCursorScreenPos();
-                    if (ImGui.Selectable($"##{quest.ObjectiveId}_Selectable_{marker.LevelId}", false, ImGuiSelectableFlags.None, new Vector2(ImGui.GetContentRegionAvail().X, ElementHeight * ImGuiHelpers.GlobalScale))) {
-                        //AgentMap.Instance()->OpenMapByMapId(marker.MapId, 0, true);
+                    if (ImGui.Selectable(
+                        $"##{quest.ObjectiveId}_Selectable_{marker.LevelId}",
+                        false,
+                        ImGuiSelectableFlags.None,
+                        new Vector2(ImGui.GetContentRegionAvail().X, ElementHeight * ImGuiHelpers.GlobalScale)
+                    )) {
+                        var mapLink = new MapLinkPayload(
+                            marker.TerritoryTypeId,
+                            marker.MapId,
+                            (int) (marker.X * 1_000f),
+                            (int) (marker.Z * 1_000f)
+                        );
+
+                        Plugin.GameGui.OpenMapWithMapLink(mapLink);
                     }
 
                     ImGui.SetCursorScreenPos(cursorStart);
