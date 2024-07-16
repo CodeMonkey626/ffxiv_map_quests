@@ -3,9 +3,9 @@ using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
-using SamplePlugin.Windows;
+using MapQuests.Windows;
 
-namespace SamplePlugin;
+namespace MapQuests;
 
 public sealed class Plugin : IDalamudPlugin
 {

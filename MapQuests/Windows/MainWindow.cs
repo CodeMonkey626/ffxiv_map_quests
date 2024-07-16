@@ -4,14 +4,13 @@ using System.Numerics;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Map = FFXIVClientStructs.FFXIV.Client.Game.UI.Map;
 using Quest = Lumina.Excel.GeneratedSheets.Quest;
 using ImGuiNET;
 using Dalamud.Interface;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 
-namespace SamplePlugin.Windows;
+namespace MapQuests.Windows;
 
 public unsafe class MainWindow : Window, IDisposable
 {
