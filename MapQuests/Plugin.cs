@@ -15,7 +15,7 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
 
-    private const string CommandName = "/pmq";
+    private const string CommandName = "/mq";
 
     public Configuration Configuration { get; init; }
 
