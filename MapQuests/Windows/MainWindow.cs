@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.Numerics;
 using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Map = FFXIVClientStructs.FFXIV.Client.Game.UI.Map;
 using Quest = Lumina.Excel.GeneratedSheets.Quest;
@@ -20,8 +19,7 @@ public unsafe class MainWindow : Window, IDisposable
     // We give this window a hidden ID using ##
     // So that the user will see "My Amazing Window" as window title,
     // but for ImGui the ID is "My Amazing Window##With a hidden ID"
-    public MainWindow(Plugin plugin)
-        : base("Unaccepted Quests", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
+    public MainWindow(Plugin plugin) : base("Unaccepted Quests", ImGuiWindowFlags.None)
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -37,8 +35,6 @@ public unsafe class MainWindow : Window, IDisposable
 
     public override void Draw()
     {
-        using var child = ImRaii.Child($"quest_list_scrollable_child", new Vector2(0.0f, 0.0f), false, ImGuiWindowFlags.None);
-
         if (Map.Instance()->UnacceptedQuestMarkers.Count > 0) {
             foreach (var quest in Map.Instance()->UnacceptedQuestMarkers) {
                 var questData = Plugin.DataManager.GetExcelSheet<Quest>()!.GetRow(quest.ObjectiveId + 65536u);
