@@ -15,7 +15,7 @@ namespace MapQuests.Windows;
 
 public unsafe class MainWindow : Window, IDisposable
 {
-    private Plugin Plugin;
+    private readonly Plugin plugin;
     private const float ElementHeight = 48.0f;
 
     // We give this window a hidden ID using ##
@@ -29,7 +29,7 @@ public unsafe class MainWindow : Window, IDisposable
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
         };
 
-        Plugin = plugin;
+        this.plugin = plugin;
         BgAlpha = 0.5f;
     }
 
