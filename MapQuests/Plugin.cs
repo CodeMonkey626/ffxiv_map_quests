@@ -17,7 +17,8 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
 
-    private const string CommandName = "/mq";
+    private const string ShortCommandName = "/mq";
+    private const string LongCommandName = "/mapquests";
 
     public Configuration Configuration { get; init; }
 
@@ -32,7 +33,11 @@ public sealed class Plugin : IDalamudPlugin
 
         WindowSystem.AddWindow(MainWindow);
 
-        CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
+        CommandManager.AddHandler(ShortCommandName, new CommandInfo(OnCommand)
+        {
+            HelpMessage = "Toggle the display of the quest list."
+        });
+        CommandManager.AddHandler(LongCommandName, new CommandInfo(OnCommand)
         {
             HelpMessage = "Toggle the display of the quest list."
         });
@@ -49,7 +54,8 @@ public sealed class Plugin : IDalamudPlugin
 
         MainWindow.Dispose();
 
-        CommandManager.RemoveHandler(CommandName);
+        CommandManager.RemoveHandler(ShortCommandName);
+        CommandManager.RemoveHandler(LongCommandName);
     }
 
     private void OnCommand(string command, string args)

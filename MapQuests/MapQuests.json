@@ -2,7 +2,7 @@
   "Author": "CodeMonkey626",
   "Name": "Map Quests",
   "Punchline": "Lists uncompleted quests for the zone you're in.",
-  "Description": "Lists uncompleted quests for the zone you're in. /mq",
+  "Description": "Lists uncompleted quests for the zone you're in. /mq /mapquests",
   "ApplicableVersion": "any",
   "Tags": [
     "plugin",
