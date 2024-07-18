@@ -1,8 +1,10 @@
 {
   "Author": "CodeMonkey626",
   "Name": "Map Quests",
-  "Punchline": "Lists uncompleted quests for the zone you're in.",
-  "Description": "Lists uncompleted quests for the zone you're in. /mq /mapquests",
+  "Punchline": "Lists unaccepted quests for the current zone.",
+  "Description": "Lists unaccepted quests for the current zone. /mq /mapquests",
+  "IconUrl": "https://raw.githubusercontent.com/CodeMonkey626/ffxiv_map_quests/master/MapQuests/Icon.png",
+  "RepoUrl": "https://github.com/CodeMonkey626/ffxiv_map_quests",
   "ApplicableVersion": "any",
   "Tags": [
     "plugin",
