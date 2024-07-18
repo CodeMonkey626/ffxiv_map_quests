@@ -1,13 +1,15 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Numerics;
+
+using Dalamud.Game.Text.SeStringHandling.Payloads;
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Interface;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
+using ImGuiNET;
 using Map = FFXIVClientStructs.FFXIV.Client.Game.UI.Map;
 using Quest = Lumina.Excel.GeneratedSheets.Quest;
-using ImGuiNET;
-using Dalamud.Interface;
-using Dalamud.Game.Text.SeStringHandling.Payloads;
 
 namespace MapQuests.Windows;
 
@@ -32,6 +34,25 @@ public unsafe class MainWindow : Window, IDisposable
     }
 
     public void Dispose() { }
+
+    public override unsafe bool DrawConditions() {
+        if (Plugin.ClientState is { IsLoggedIn: false } or { IsPvP: true }) return false;
+        if (Plugin.Condition.Any(
+            ConditionFlag.BetweenAreas,
+            ConditionFlag.BetweenAreas51,
+            ConditionFlag.OccupiedInCutSceneEvent,
+            ConditionFlag.WatchingCutscene,
+            ConditionFlag.WatchingCutscene78,
+            ConditionFlag.OccupiedInQuestEvent,
+            ConditionFlag.InCombat,
+            ConditionFlag.BoundByDuty,
+            ConditionFlag.BoundByDuty56,
+            ConditionFlag.BoundByDuty95,
+            ConditionFlag.DutyRecorderPlayback
+        )) return false;
+
+        return true;
+    }
 
     public override void Draw()
     {
