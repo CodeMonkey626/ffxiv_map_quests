@@ -18,9 +18,6 @@ public unsafe class MainWindow : Window, IDisposable
     private readonly Plugin plugin;
     private const float ElementHeight = 48.0f;
 
-    // We give this window a hidden ID using ##
-    // So that the user will see "My Amazing Window" as window title,
-    // but for ImGui the ID is "My Amazing Window##With a hidden ID"
     public MainWindow(Plugin plugin) : base("Unaccepted Quests", ImGuiWindowFlags.None)
     {
         SizeConstraints = new WindowSizeConstraints
