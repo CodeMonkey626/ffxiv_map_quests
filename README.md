@@ -1,4 +1,4 @@
-# Map Quests
+# <img src="MapQuests/Icon.png" width="25" /> Map Quests
 
 Map Quests is simple FFXIV Dalamud plugin that lists unaccepted quests for the current zone.
 
