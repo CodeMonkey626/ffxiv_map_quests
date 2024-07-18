@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Numerics;
 using Dalamud.Interface.Utility;
@@ -30,6 +30,7 @@ public unsafe class MainWindow : Window, IDisposable
         };
 
         Plugin = plugin;
+        BgAlpha = 0.5f;
     }
 
     public void Dispose() { }
